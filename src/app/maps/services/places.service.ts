@@ -43,6 +43,12 @@ export class PlacesService {
 // types=place,postcode,address&language=es&limit=1&access_token=pk.eyJ1IjoibWFnZGllbG1zIiwiYSI6ImNreXB6ZXJ1azBjeXEybnMyYm01bHk0aHAifQ.8iVI9ERFXi5ET09QbKJcww
   getPlaceByQuery(query: string = '') {
 
+    if(query.length === 0){
+      this.places = [];
+      this.isLoadingPlaces = false;
+      return;
+    }
+
     if(!this.useLocation) throw Error('No hay userLocation')
 
     this.isLoadingPlaces = true;
@@ -53,8 +59,6 @@ export class PlacesService {
       }
     })
      .subscribe(response => {
-
-      console.log(response.features)
 
       this.isLoadingPlaces = false;
       this.places = response.features;
