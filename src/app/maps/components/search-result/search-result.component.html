@@ -13,7 +13,8 @@
         <p>{{place.place_name}}</p>
 
         <button class="btn btn-sm btn-outline-primary"
-                [ngClass]="(place.id === selectedId)? 'btn-outline-light':'btn-outline-primary'">
+                [ngClass]="(place.id === selectedId)? 'btn-outline-light':'btn-outline-primary'"
+                (click)="getDirection(place)">
             Direcciones
         </button>
     </li>
