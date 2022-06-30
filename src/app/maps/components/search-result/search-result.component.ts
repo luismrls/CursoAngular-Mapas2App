@@ -33,6 +33,8 @@ export class SearchResultComponent {
 
     if(!this.placesService.useLocation) throw Error('No hay user locatacion');
 
+    this.placesService.deletePlaces();
+
     const start = this.placesService.useLocation;
     const end = place.center as [number, number];
 
